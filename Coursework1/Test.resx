@@ -117,15 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Info.Text" xml:space="preserve">
-    <value>
-
-
-
-
-
-Программа была разработана студентом ПО-33з Номировским А.Ю. Специально для  ЮЗГУ. 
-
-Данная программа позволит Вам узнать об инкапсуляции в C#, а также протестировать свои знания, посмотреть и разобраться в примере кода.</value>
-  </data>
 </root>

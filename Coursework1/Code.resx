@@ -117,15 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Info.Text" xml:space="preserve">
-    <value>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>public class BankAccount
+{
+    // Объявлением поля приватными, чтобы они были доступны только внутри класса и недоступны извне. 
+    // Это обеспечит скрытность данных и предотвратит нежелательное вмешательство.
+    private string accountNumber;
+    private decimal balance;
 
+    // Конструктор класса
+    public BankAccount(string accNumber, decimal initialBalance)
+    {
+        accountNumber = accNumber;
+        balance = initialBalance;
+    }
 
+    // Метод для пополнения счета
+    public void Deposit(decimal amount)
+    {
+        if (amount &lt;= 0)
+        {
+            Console.WriteLine("Сумма для пополнения должна быть больше нуля.");
+            return;
+        }
 
+        balance += amount;
+        Console.WriteLine($"{amount} руб. успешно зачислены на счет.");
+    }
 
+    // Метод для снятия денег со счета
+    public void Withdraw(decimal amount)
+    {
+        if (amount &lt;= 0)
+        {
+            Console.WriteLine("Сумма для снятия должна быть больше нуля.");
+            return;
+        }
 
-Программа была разработана студентом ПО-33з Номировским А.Ю. Специально для  ЮЗГУ. 
+        if (amount &gt; balance)
+        {
+            Console.WriteLine("Недостаточно средств на счете.");
+            return;
+        }
 
-Данная программа позволит Вам узнать об инкапсуляции в C#, а также протестировать свои знания, посмотреть и разобраться в примере кода.</value>
+        balance -= amount;
+        Console.WriteLine($"{amount} руб. успешно сняты со счета.");
+    }
+
+    // Метод для получения баланса счета
+    public decimal GetBalance()
+    {
+        return balance;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Создание объекта банковского счета
+        BankAccount account = new BankAccount("1234567890", 1000);
+
+        // Попытка прямого доступа к полям accountNumber и balance извне класса запрещена из-за инкапсуляции
+
+        // Использование методов класса для взаимодействия с данными
+        Console.WriteLine($"Баланс на счете: {account.GetBalance()} руб.");
+        account.Deposit(500);
+        Console.WriteLine($"Баланс на счете после пополнения: {account.GetBalance()} руб.");
+        account.Withdraw(200);
+        Console.WriteLine($"Баланс на счете после снятия: {account.GetBalance()} руб.");
+
+        // Попытка прямого доступа к полям accountNumber и balance извне класса запрещена из-за инкапсуляции
+        // Например:
+        // account.accountNumber = "9876543210"; // Ошибка компиляции: невозможно получить доступ к 'accountNumber', так как он является закрытым
+        // decimal currentBalance = account.balance; // Ошибка компиляции: невозможно получить доступ к 'balance', так как он является закрытым
+    }
+}</value>
   </data>
 </root>
